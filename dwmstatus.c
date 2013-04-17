@@ -12,9 +12,9 @@
 
 #include <X11/Xlib.h>
 
-char *tzargentina = "America/Buenos_Aires";
+char *tzmadrid = "Europe/Madrid";
 char *tzutc = "UTC";
-char *tzberlin = "Europe/Berlin";
+char *tzchicago = "America/Chicago";
 
 static Display *dpy;
 
@@ -97,9 +97,9 @@ main(void)
 {
 	char *status;
 	char *avgs;
-	char *tmar;
+	char *tmmad;
 	char *tmutc;
-	char *tmbln;
+	char *tmchi;
 
 	if (!(dpy = XOpenDisplay(NULL))) {
 		fprintf(stderr, "dwmstatus: cannot open display.\n");
@@ -108,17 +108,17 @@ main(void)
 
 	for (;;sleep(90)) {
 		avgs = loadavg();
-		tmar = mktimes("%H:%M", tzargentina);
+		tmmad = mktimes("%H:%M", tzmadrid);
 		tmutc = mktimes("%H:%M", tzutc);
-		tmbln = mktimes("KW %W %a %d %b %H:%M %Z %Y", tzberlin);
+		tmchi = mktimes("KW %W %a %d %b %H:%M %Z %Y", tzchicago);
 
-		status = smprintf("L:%s A:%s U:%s %s",
-				avgs, tmar, tmutc, tmbln);
+		status = smprintf("L:%s Madrid:%s UTC:%s %s",
+				avgs, tmmad, tmutc, tmchi);
 		setstatus(status);
 		free(avgs);
-		free(tmar);
+		free(tmmad);
 		free(tmutc);
-		free(tmbln);
+		free(tmchi);
 		free(status);
 	}
 
