@@ -106,7 +106,7 @@ main(void)
 		return 1;
 	}
 
-	for (;;sleep(90)) {
+	for (;;sleep(30)) {
 		avgs = loadavg();
 		tmmad = mktimes("%H:%M", tzmadrid);
 		tmutc = mktimes("%H:%M", tzutc);
