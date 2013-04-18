@@ -110,7 +110,7 @@ main(void)
 		avgs = loadavg();
 		tmmad = mktimes("%H:%M", tzmadrid);
 		tmutc = mktimes("%H:%M", tzutc);
-		tmchi = mktimes("KW %W %a %d %b %H:%M %Z %Y", tzchicago);
+		tmchi = mktimes("%a %d %b %H:%M %Z %Y", tzchicago);
 
 		status = smprintf("L:%s Madrid:%s UTC:%s %s",
 				avgs, tmmad, tmutc, tmchi);
